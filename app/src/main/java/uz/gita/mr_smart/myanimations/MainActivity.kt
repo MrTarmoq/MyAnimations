@@ -1,5 +1,6 @@
 package uz.gita.mr_smart.myanimations
 
+import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -20,7 +21,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun exampleAnimation(view: View){
-
+        ValueAnimator.ofFloat(0f, 360f).apply {
+            addUpdateListener {
+                view.rotation = it.animatedValue as Float
+            }
+            duration = 2000
+            start()
+        }
     }
 
 }
